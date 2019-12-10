@@ -19,22 +19,15 @@ node {
             scannerHome = tool 'SonarQube'
         }
 
-        withSonarQubeEnv('SonarQube') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
+        steps {
+            withSonarQubeEnv('SonarQube') {
+                sh "${scannerHome}/bin/sonar-scanner"
+            }
 
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
+            timeout(time: 10, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+            }
         }
-//         steps {
-//             withSonarQubeEnv('SonarQube') {
-//                 sh "${scannerHome}/bin/sonar-scanner"
-//             }
-//
-//             timeout(time: 10, unit: 'MINUTES') {
-//                 waitForQualityGate abortPipeline: true
-//             }
-//         }
     }
 
     stage('Push image') {
