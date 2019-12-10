@@ -15,11 +15,18 @@ node {
     }
 
     stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
+        environment {
+            scannerHome = tool 'SonarQube'
+        }
 
-        app.inside {
-            sh 'echo "Tests passed"'
+        steps {
+            withSonarQubeEnv('sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner"
+            }
+
+            timeout(time: 10, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+            }
         }
     }
 
