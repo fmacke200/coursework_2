@@ -4,8 +4,9 @@ pipeline {
         stage('Build image') {
             /* This builds the actual image; synonymous to
              * docker build on the command line */
-
-            app = docker.build("fmacke200/coursework_2")
+            steps {
+                app = docker.build("fmacke200/coursework_2")
+            }
         }
 
         stage('Test image') {
@@ -29,9 +30,11 @@ pipeline {
              * First, the incremental build number from Jenkins
              * Second, the 'latest' tag.
              * Pushing multiple tags is cheap, as all the layers are reused. */
-            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                app.push("${env.BUILD_NUMBER}")
-                app.push("latest")
+            steps{
+                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
+                }
             }
         }
     }
