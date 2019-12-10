@@ -85,7 +85,7 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "coursework_2-build"
+            "value": "coursework2-build"
         },
         "virtualMachineRG": {
             "value": "coursework_2"
@@ -103,7 +103,7 @@
             "value": null
         },
         "diagnosticsStorageAccountName": {
-            "value": "coursework_2"
+            "value": "fmacke200coursework2"
         },
         "diagnosticsStorageAccountId": {
             "value": "Microsoft.Storage/storageAccounts/coursework_2"
