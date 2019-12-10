@@ -13,7 +13,7 @@ pipeline {
 
         stage('Test image') {
             environment {
-                scannerHome = tool 'SonarQube'
+                scannerHome = tool 'sonarqube'
             }
 
             steps {
