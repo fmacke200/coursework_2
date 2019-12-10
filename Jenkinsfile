@@ -5,7 +5,9 @@ pipeline {
             /* This builds the actual image; synonymous to
              * docker build on the command line */
             steps {
-                app = docker.build("fmacke200/coursework_2")
+                script {
+                    app = docker.build("fmacke200/coursework_2")
+                }
             }
         }
 
