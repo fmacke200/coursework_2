@@ -4,7 +4,7 @@ pipeline {
         stage('Build image') {
             /* This builds the actual image; synonymous to
              * docker build on the command line */
-            steps {
+            environment {
                 app = docker.build("fmacke200/coursework_2")
             }
         }
