@@ -9,44 +9,18 @@
 
   tasks:
 
-    - name: Install Packages
-      apt:
-        update_cache: yes
-        name: "{{ packages }}"
-      vars:
-        packages:
-          - apt-transport-https
+    - stat:
+        path: /home/fmacke200/kubernetes.sh
+      register: result
 
-    - name: Download kubectl Key
-      command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    - name: Copy kubernetes.sh to Production VM
+      copy:
+        src: ../setup_scripts/kubernetes.sh
+        dest: /home/fmacke200/kubernetes.sh
+      when: result.stat.exists == false
 
-    - name: Add Kubernetes to Package Sources List
-      command: echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+    - name: Set kubernetes.sh permissions
+      command: chmod +x /home/fmacke200/kubernetes.sh
 
-    - name: Install kubectl
-      apt:
-        update_cache: yes
-        name: "{{ packages }}"
-      vars:
-        packages:
-          - kubectl
-
-    - name: Download virtualbox Key
-      command: wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-
-    - name: Install virtualbox
-      apt:
-        update_cache: yes
-        name: "{{ packages }}"
-      vars:
-        packages:
-          - virtualbox
-
-    - name: Download minikube and make executable
-      get_url:
-        url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        dest: /usr/local/bin/minikube
-        mode: '755'
-
-    - name: Start minikube
-      command: minikube start --vm-driver=virtualbox
+    - name: Run Kubernetes installation script
+      command: sudo /home/fmacke200/kubernetes.sh
