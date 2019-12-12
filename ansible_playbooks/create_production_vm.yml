@@ -10,7 +10,7 @@
     myNIC: coursework_2-production-nic
     myNetworkSecurityGroup: coursework_2-production-nsg
     myVM: coursework_2-production
-    mySSHkey:
+    mySSHkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/V60DWqpC+F3RG9+iHx0z8aGo4zBrY4QMEbxKN9wZduijrBXgmGUjkTyQgZ6jqXVdSz8+FAgn105LTxNdSAkoS4guvg6VI67dQNNZnjONEJ0cSPi9cJxb0N4T4bIQouZTU8MXWkt3f35cwDNIfjTa/wuRsbU8ednHI+yfX3fyydbC4cPjO0Z733AciInX2IWxwdPrfwvLpd1JiH+6LALA5A4OLEpJwy0w6bLI/sXL6O5AomPHsolZnWv2+JNtwvCPDW7KMdKWFUorPG1IB9DBp5I8NkYaaBKo93num94EKrf97Xa+wVIZ+9WDqBlEyS2sGfmdowC3IzDxX3n5jW0T fmacke200@coursework2-build
 
   tasks:
 
