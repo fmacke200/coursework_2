@@ -24,23 +24,23 @@
       command: echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
 
     - name: Install kubectl
-        apt:
-          update_cache: yes
-          name: "{{ packages }}"
-        vars:
-          packages:
-            - kubectl
+      apt:
+        update_cache: yes
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - kubectl
 
     - name: Download virtualbox Key
       command: wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
 
     - name: Install virtualbox
-        apt:
-          update_cache: yes
-          name: "{{ packages }}"
-        vars:
-          packages:
-            - virtualbox
+      apt:
+        update_cache: yes
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - virtualbox
 
     - name: Download minikube and make executable
       get_url:
