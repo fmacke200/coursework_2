@@ -5,7 +5,7 @@
 
   vars:
     myResourceGroup: coursework_2
-    myVM: coursework_2-production
+    myVM: coursework2-production
 
   tasks:
 
