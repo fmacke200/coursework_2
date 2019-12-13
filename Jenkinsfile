@@ -37,5 +37,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Update Kubernetes') {
+            steps{
+                script {
+                    sh "ssh fmacke200@137.135.84.148 kubectl set image deployments/coursework2 coursework2=fmacke200/coursework2:${env.BUILD_NUMBER}"
+                }
+            }
+        }
     }
 }
