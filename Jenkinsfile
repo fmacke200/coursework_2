@@ -6,7 +6,7 @@ pipeline {
              * docker build on the command line */
             steps {
                 script {
-                    app = docker.build("fmacke200/coursework_2")
+                    app = docker.build("fmacke200/coursework2")
                 }
             }
         }
